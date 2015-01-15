@@ -22,13 +22,13 @@ public class BoardTest {
         printStream = mock(PrintStream.class);
         board = mock(Board.class);
         bufferedReader = mock(BufferedReader.class);
-        game = new Game(printStream, board, bufferedReader);
+        game = new Game(board);
     }
 
     @Test
     public void shouldDrawBoardWhenGameStarts() throws IOException {
         when(board.drawBoard()).thenReturn("board is drawn");
-        game.play();
+        game.returnBoard();
         verify(printStream).println("board is drawn");
     }
 
@@ -36,7 +36,7 @@ public class BoardTest {
     public void shouldDrawFormattedBoard() throws IOException {
         Board board = new Board();
         String formattedBoardString = "  |  |   \n---------\n  |  |   \n---------\n  |  |  ";
-        game.play();
+        game.returnBoard();
         assertThat(board.drawBoard(), is(formattedBoardString));
     }
 

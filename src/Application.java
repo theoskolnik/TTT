@@ -18,9 +18,8 @@ public class Application {
     }
 
     public void start() {
-        game.play();
+        printStream.println(game.returnBoard());
     }
-
 
     public void promptPlayerToMove() {
         printStream.println("Enter a number 1 through 9");

@@ -17,13 +17,22 @@ public class ApplicationTest {
     private BufferedReader bufferedReader;
     private Application app;
     private Game game;
+    private Board board;
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
         bufferedReader = mock(BufferedReader.class);
-        game = mock(Game.class);
+        board = mock(Board.class);
+        game = new Game(board);
         app = new Application(printStream, bufferedReader, game);
+    }
+
+    @Test
+    public void shouldPrintBoardWhenAppStarts() {
+        app.start();
+        when(board.drawBoard()).thenReturn("board string");
+        verify(printStream).println("board string");
     }
 
     @Test
@@ -34,9 +43,9 @@ public class ApplicationTest {
 
     @Test
     public void shouldProcessPlayerInputCorrectly() throws IOException {
-        game.play();
+        app.start();
         when(bufferedReader.readLine()).thenReturn("1");
-        assertThat(game.processInput(), is(1));
+        assertThat(app.processInput(), is(1));
     }
 
 

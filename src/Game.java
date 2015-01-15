@@ -9,21 +9,13 @@ import java.io.PrintStream;
 public class Game {
 
     private Board board;
-    private BufferedReader bufferedReader;
-    private PrintStream printStream;
 
-    public Game(PrintStream printStream, Board board, BufferedReader bufferedReader) {
-        this.printStream = printStream;
+    public Game(Board board) {
         this.board = board;
-        this.bufferedReader = bufferedReader;
     }
 
-    public Integer processInput() throws IOException {
-        String userInput = bufferedReader.readLine();
-        return Integer.parseInt(userInput);
-    }
+    public String returnBoard() {
+        return board.drawBoard();
 
-    public void play() {
-        printStream.println(board.drawBoard());
     }
 }

@@ -1,29 +1,33 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 /**
  * Created by tskolnik on 1/15/15.
  */
-public class Game {
+public class Application {
 
-    private Board board;
-    private BufferedReader bufferedReader;
     private PrintStream printStream;
+    private BufferedReader bufferedReader;
+    private Game game;
 
-    public Game(PrintStream printStream, Board board, BufferedReader bufferedReader) {
+    public Application(PrintStream printStream, BufferedReader bufferedReader, Game game) {
         this.printStream = printStream;
-        this.board = board;
         this.bufferedReader = bufferedReader;
+        this.game = game;
+    }
+
+    public void start() {
+        game.play();
+    }
+
+
+    public void promptPlayerToMove() {
+        printStream.println("Enter a number 1 through 9");
     }
 
     public Integer processInput() throws IOException {
         String userInput = bufferedReader.readLine();
         return Integer.parseInt(userInput);
-    }
-
-    public void play() {
-        printStream.println(board.drawBoard());
     }
 }

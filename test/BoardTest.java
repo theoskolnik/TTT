@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.hamcrest.core.Is.is;
@@ -13,36 +15,45 @@ public class BoardTest {
     private PrintStream printStream;
     private Board board;
     private Game game;
-
-//    When the program starts, draw a board that looks like this:
-//            |   |
-//            ---------
-//            |   |
-//            ---------
-//            |   |
+    private BufferedReader bufferedReader;
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
         board = mock(Board.class);
-        game = new Game(printStream, board);
+        bufferedReader = mock(BufferedReader.class);
+        game = new Game(printStream, board, bufferedReader);
     }
 
     @Test
-    public void shouldDrawBoardWhenGameStarts() {
+    public void shouldDrawBoardWhenGameStarts() throws IOException {
         when(board.drawBoard()).thenReturn("board is drawn");
-        game.start();
+        game.play();
         verify(printStream).println("board is drawn");
     }
 
     @Test
-    public void shouldDrawFormattedBoard() {
+    public void shouldDrawFormattedBoard() throws IOException {
         Board board = new Board();
         String formattedBoardString = "  |  |   \n---------\n  |  |   \n---------\n  |  |  ";
-        game.start();
+        game.play();
         assertThat(board.drawBoard(), is(formattedBoardString));
     }
 
+//    @Test
+//    public void shouldUpdateBoard() throws IOException {
+//        Board board = new Board();
+//        String formattedBoardString = "X |  |   \n---------\n  |  |   \n---------\n  |  |  ";
+//        game.start();
+//        when(bufferedReader.readLine()).thenReturn("1");
+
+//        assertThat(board.drawBoard(), is(formattedBoardString));
+//    }
+
+    @Test
+    public void shouldPrintBoardWithAnX() throws IOException {
+
+    }
 
 
 }

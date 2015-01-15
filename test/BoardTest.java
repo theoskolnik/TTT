@@ -16,20 +16,15 @@ public class BoardTest {
     private Board board;
     private Game game;
     private BufferedReader bufferedReader;
+    private Application app;
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
         board = mock(Board.class);
         bufferedReader = mock(BufferedReader.class);
-        game = new Game(board);
-    }
-
-    @Test
-    public void shouldDrawBoardWhenGameStarts() throws IOException {
-        when(board.drawBoard()).thenReturn("board is drawn");
-        game.returnBoard();
-        verify(printStream).println("board is drawn");
+        game = mock(Game.class);
+        app = new Application(printStream, bufferedReader, game);
     }
 
     @Test
@@ -40,20 +35,13 @@ public class BoardTest {
         assertThat(board.drawBoard(), is(formattedBoardString));
     }
 
-//    @Test
-//    public void shouldUpdateBoard() throws IOException {
-//        Board board = new Board();
-//        String formattedBoardString = "X |  |   \n---------\n  |  |   \n---------\n  |  |  ";
-//        game.start();
-//        when(bufferedReader.readLine()).thenReturn("1");
-
-//        assertThat(board.drawBoard(), is(formattedBoardString));
-//    }
-
     @Test
-    public void shouldPrintBoardWithAnX() throws IOException {
-
+    public void shouldUpdateBoardWithAnX() throws IOException {
+        String formattedBoardString = "X |  |   \n---------\n  |  |   \n---------\n  |  |  ";
+        when(app.processInput()).thenReturn(1);
+        app.start();
+        app.processInput();
+        assertThat(board.updateBoard(), is(formattedBoardString));
     }
-
 
 }

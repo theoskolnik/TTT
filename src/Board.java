@@ -10,4 +10,7 @@ public class Board {
     }
 
 
+    public String updateBoard() {
+        return "";
+    }
 }

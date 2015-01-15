@@ -16,6 +16,5 @@ public class Game {
 
     public String returnBoard() {
         return board.drawBoard();
-
     }
 }

@@ -24,14 +24,22 @@ public class ApplicationTest {
         printStream = mock(PrintStream.class);
         bufferedReader = mock(BufferedReader.class);
         board = mock(Board.class);
-        game = new Game(board);
+        game = mock(Game.class);
         app = new Application(printStream, bufferedReader, game);
     }
 
     @Test
-    public void shouldPrintBoardWhenAppStarts() {
+    public void shouldPrintBoardAndPromptWhenAppStarts() throws IOException {
         app.start();
         when(board.drawBoard()).thenReturn("board string");
+        verify(printStream).println(game.returnBoard());
+        verify(printStream).println("Enter a number 1 through 9");
+    }
+
+    @Test
+    public void shouldPrintBoard() {
+        when(game.returnBoard()).thenReturn("board string");
+        app.printBoard();
         verify(printStream).println("board string");
     }
 
@@ -47,6 +55,7 @@ public class ApplicationTest {
         when(bufferedReader.readLine()).thenReturn("1");
         assertThat(app.processInput(), is(1));
     }
+
 
 
 }

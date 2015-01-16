@@ -5,10 +5,11 @@ import javafx.beans.value.ObservableBooleanValue;
  */
 public class Board {
 
+
+
     public String drawBoard() {
         return "  |  |   \n---------\n  |  |   \n---------\n  |  |  ";
     }
-
 
     public String updateBoard() {
         return "";

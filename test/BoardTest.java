@@ -30,6 +30,7 @@ public class BoardTest {
     @Test
     public void shouldDrawFormattedBoard() throws IOException {
         Board board = new Board();
+//        String formattedBoardString = "%-3s | %3s | %3s";
         String formattedBoardString = "  |  |   \n---------\n  |  |   \n---------\n  |  |  ";
         game.returnBoard();
         assertThat(board.drawBoard(), is(formattedBoardString));

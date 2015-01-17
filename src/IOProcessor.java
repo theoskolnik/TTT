@@ -16,7 +16,6 @@ public class IOProcessor {
         System.out.println("Enter a number 1 through 9");
     }
 
-
     protected Integer processInput() throws IOException {
         String userInput = in.readLine();
         return Integer.parseInt(userInput);

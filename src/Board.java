@@ -20,7 +20,7 @@ public class Board {
         printStream.printf("%3s|%3s|%3s\n", grid[6], grid[7], grid[8]);
     }
 
-    public void updateGrid(Integer move) {
-        grid[move - 1] = "X";
+    public void updateGrid(Integer move, String symbol) {
+        grid[move - 1] = symbol;
     }
 }

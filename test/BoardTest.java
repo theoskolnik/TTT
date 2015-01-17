@@ -13,6 +13,9 @@ public class BoardTest {
     private BufferedReader in;
     private IOProcessor ioProcessor;
     private Player player;
+    private Player player1;
+    private Player player2;
+    private Game game;
 
     @Before
     public void setUp() throws Exception {
@@ -20,7 +23,9 @@ public class BoardTest {
         board = new Board(printStream);
         in = mock(BufferedReader.class);
         ioProcessor = new IOProcessor(in);
-        player = mock(Player.class);
+        player1 = mock(Player.class);
+        player2 = mock(Player.class);
+        game = new Game(board, player1, player2);
     }
 
     @Test
@@ -32,8 +37,9 @@ public class BoardTest {
 
     @Test
     public void shouldUpdateBoardWithAnX() throws IOException {
-        when(in.readLine()).thenReturn("1");
-        player.getMove();
+        when(player1.getMove()).thenReturn(1);
+        when(player1.symbol()).thenReturn("X");
+        board.updateGrid(player1.getMove(), player1.symbol());
         board.print();
         verify(printStream, times(1)).printf("%3s|%3s|%3s\n", "X", "", "");
         verify(printStream, times(2)).printf("%3s|%3s|%3s\n", "", "", "");

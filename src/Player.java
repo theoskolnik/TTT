@@ -6,13 +6,20 @@ import java.io.IOException;
 public class Player {
 
     private IOProcessor ioProcessor;
+    private String symbol;
 
-    public Player(IOProcessor ioProcessor) {
+    public Player(IOProcessor ioProcessor, String symbol) {
         this.ioProcessor = ioProcessor;
+        this.symbol = symbol;
     }
 
     public Integer getMove() throws IOException {
         ioProcessor.promptPlayer();
         return ioProcessor.processInput();
+    }
+
+    public String symbol() {
+
+        return symbol;
     }
 }

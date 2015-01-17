@@ -46,4 +46,17 @@ public class BoardTest {
         verify(printStream, times(2)).println("-----------");
     }
 
+    @Test
+    public void shouldCheckIfMoveIsValid() throws IOException {
+        Board board = mock(Board.class);
+        when(player1.getMove()).thenReturn(1);
+        when(player1.symbol()).thenReturn("X");
+        when(player2.getMove()).thenReturn(1);
+        when(player2.symbol()).thenReturn("O");
+        board.updateGrid(player1.getMove(), player1.symbol());
+        board.isValidMove(player2.getMove());
+        verify(board, times(0)).updateGrid(player2.getMove(), player2.symbol());
+
+    }
+
 }

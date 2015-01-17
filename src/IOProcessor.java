@@ -20,4 +20,8 @@ public class IOProcessor {
         String userInput = in.readLine();
         return Integer.parseInt(userInput);
     }
+
+    public void printInvalidMoveMessage() {
+        System.out.println("Move is already taken. Go again.");
+    }
 }

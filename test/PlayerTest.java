@@ -43,6 +43,8 @@ public class PlayerTest {
         when(player1.getMove()).thenReturn(1);
         when(player2.symbol()).thenReturn("O");
         when(player2.getMove()).thenReturn(2);
+        when(board.isValidMove(player1.getMove())).thenReturn(true);
+        when(board.isValidMove(player2.getMove())).thenReturn(true);
         game.start();
         verify(board).updateGrid(1, "X");
         verify(board).updateGrid(2, "O");

@@ -18,11 +18,20 @@ public class Game {
     public void start() throws IOException {
         board.print();
         Integer move1 = player1.getMove();
-        board.updateGrid(move1, player1.symbol());
-        board.print();
+        if(board.isValidMove(move1)) {
+            board.updateGrid(move1, player1.symbol());
+            board.print();
+        } else {
+            player1.notifyMoveIsInvalid();
+        }
         Integer move2 = player2.getMove();
-        board.updateGrid(move2, player2.symbol());
-        board.print();
+
+        if(board.isValidMove(move2)) {
+            board.updateGrid(move2, player2.symbol());
+            board.print();
+        } else {
+            player2.notifyMoveIsInvalid();
+        }
     }
 
 

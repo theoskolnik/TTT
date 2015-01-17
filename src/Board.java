@@ -23,4 +23,9 @@ public class Board {
     public void updateGrid(Integer move, String symbol) {
         grid[move - 1] = symbol;
     }
+
+
+    protected boolean isValidMove(Integer move) {
+        return grid[move - 1] == "" ? true : false;
+    }
 }

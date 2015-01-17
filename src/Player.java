@@ -19,7 +19,10 @@ public class Player {
     }
 
     public String symbol() {
-
         return symbol;
+    }
+
+    public void notifyMoveIsInvalid() {
+        ioProcessor.printInvalidMoveMessage();
     }
 }

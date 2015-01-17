@@ -1,6 +1,5 @@
 import org.junit.Before;
 
-import java.io.BufferedReader;
 import java.io.PrintStream;
 
 import static org.mockito.Mockito.mock;
@@ -10,22 +9,15 @@ public class GameTest {
     private PrintStream printStream;
     private Game game;
     private Board board;
-    private BufferedReader bufferedReader;
+    private IOProcessor ioProcessor;
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
         board = mock(Board.class);
-        bufferedReader = mock(BufferedReader.class);
-        game = new Game(bufferedReader, board);
+        ioProcessor = mock(IOProcessor.class);
+        game = new Game(ioProcessor, board);
     }
-
-//    @Test
-//    public void shouldPrintBoard() {
-//        when(board.print()).thenReturn("board string");
-//        game.start();
-//        verify(printStream).println("board string");
-//    }
 
 //    @Test
 //    public void shouldPromptPlayerOneToEnterANumber() throws IOException {

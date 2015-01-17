@@ -10,9 +10,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         PrintStream printStream = new PrintStream(System.out);
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         Board board = new Board(printStream);
-        Game game = new Game(in, board);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        IOProcessor ioProcessor = new IOProcessor(in);
+        Game game = new Game(ioProcessor, board);
         game.start();
     }
 }

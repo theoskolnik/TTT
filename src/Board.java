@@ -30,8 +30,12 @@ public class Board {
     }
 
     public boolean allSpacesTaken() {
+        for (int i = 0; i < grid.length; i++) {
+            if (grid[i].equals("")){
+                return false;
+            }
+        }
         return false;
     }
-
 
 }

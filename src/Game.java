@@ -34,7 +34,6 @@ public class Game {
                 player2.notifyMoveIsInvalid();
             }
         }
-
     }
 
     public boolean isOver() {

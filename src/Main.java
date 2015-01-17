@@ -11,8 +11,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         PrintStream printStream = new PrintStream(System.out);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        Board board = new Board();
-        Game game = new Game(printStream, in, board);
+        Board board = new Board(printStream);
+        Game game = new Game(in, board);
         game.start();
     }
 }

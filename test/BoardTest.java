@@ -1,34 +1,25 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
 import java.io.PrintStream;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class BoardTest {
     private PrintStream printStream;
     private Board board;
-    private Game game;
-    private BufferedReader bufferedReader;
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
-        board = mock(Board.class);
-        bufferedReader = mock(BufferedReader.class);
-        game = new Game(printStream, bufferedReader, board);
+        board = new Board(printStream);
     }
 
     @Test
-    public void shouldDrawFormattedBoard() {
-        Board board = new Board();
-//        String formattedBoardString = "%-3s | %3s | %3s";
-        String formattedBoardString = "  |  |   \n---------\n  |  |   \n---------\n  |  |  ";
+    public void shouldPrintBoardGrid() {
         board.print();
-        assertThat(board.print(), is(formattedBoardString));
+        verify(printStream, times(3)).printf("%3s|%3s|%3s\n", "", "", "");
+        verify(printStream, times(2)).println("-----------");
     }
 
 //    @Test

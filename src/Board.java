@@ -1,11 +1,22 @@
-import javafx.beans.value.ObservableBooleanValue;
+import java.io.PrintStream;
 
 /**
  * Created by tskolnik on 1/15/15.
  */
 public class Board {
+    private String[] grid;
+    private PrintStream printStream;
 
-    public String print() {
-        return "  |  |   \n---------\n  |  |   \n---------\n  |  |  ";
+    public Board(PrintStream printStream) {
+        this.printStream = printStream;
+        this.grid = new String[] {"", "", "", "", "", "", "", "", ""};
+    }
+
+    public void print() {
+        printStream.printf("%3s|%3s|%3s\n", grid[0], grid[1], grid[2]);
+        printStream.println("-----------");
+        printStream.printf("%3s|%3s|%3s\n", grid[3], grid[4], grid[5]);
+        printStream.println("-----------");
+        printStream.printf("%3s|%3s|%3s\n", grid[6], grid[7], grid[8]);
     }
 }

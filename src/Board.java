@@ -26,6 +26,12 @@ public class Board {
 
 
     protected boolean isValidMove(Integer move) {
-        return grid[move - 1] == "" ? true : false;
+        return grid[move - 1] == "";
     }
+
+    public boolean allSpacesTaken() {
+        return false;
+    }
+
+
 }

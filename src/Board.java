@@ -19,4 +19,8 @@ public class Board {
         printStream.println("-----------");
         printStream.printf("%3s|%3s|%3s\n", grid[6], grid[7], grid[8]);
     }
+
+    public void updateGrid(Integer move) {
+        grid[move - 1] = "X";
+    }
 }

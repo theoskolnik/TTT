@@ -6,18 +6,18 @@ import java.io.IOException;
 public class Game {
 
     private Board board;
-    private IOProcessor ioProcessor;
+    private Player player;
 
-    public Game(IOProcessor ioProcessor, Board board) {
-        this.ioProcessor = ioProcessor;
+    public Game(Board board, Player player) {
         this.board = board;
+        this.player = player;
     }
 
     public void start() throws IOException {
         board.print();
-        ioProcessor.promptPlayer();
-        ioProcessor.processInput();
-        // as long as game not over, play...
+        Integer move = player.getMove();
+        board.updateGrid(move);
+        board.print();
     }
 
 

@@ -13,7 +13,8 @@ public class Main {
         Board board = new Board(printStream);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         IOProcessor ioProcessor = new IOProcessor(in);
-        Game game = new Game(ioProcessor, board);
+        Player player = new Player(ioProcessor);
+        Game game = new Game(board, player);
         game.start();
     }
 }

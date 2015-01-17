@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 /**
@@ -8,13 +7,28 @@ import java.io.PrintStream;
  */
 public class Game {
 
+    private PrintStream printStream;
+    private BufferedReader bufferedReader;
     private Board board;
 
-    public Game(Board board) {
+    public Game(PrintStream printStream, BufferedReader bufferedReader, Board board) {
+        this.printStream = printStream;
+        this.bufferedReader = bufferedReader;
         this.board = board;
     }
 
-    public String returnBoard() {
-        return board.drawBoard();
+    public void start() {
+        printStream.println(board.print());
+//        promptPlayerToMove();
     }
+
+    public void promptPlayerToMove() throws IOException {
+        printStream.println("Enter a number 1 through 9");
+    }
+
+    public Integer processInput() throws IOException {
+        String userInput = bufferedReader.readLine();
+        return Integer.parseInt(userInput);
+    }
+
 }

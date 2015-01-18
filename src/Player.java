@@ -7,22 +7,17 @@ public class Player {
 
     private IOProcessor ioProcessor;
     private String symbol;
+    private Board board;
 
-    public Player(IOProcessor ioProcessor, String symbol) {
+    public Player(IOProcessor ioProcessor, String symbol, Board board) {
         this.ioProcessor = ioProcessor;
         this.symbol = symbol;
+        this.board = board;
     }
 
-    public Integer getMove() throws IOException {
-        ioProcessor.promptPlayer();
-        return ioProcessor.processInput();
+    public void move() throws IOException {
+        int userInput = ioProcessor.getUserInput();
+        board.updateGrid(userInput, symbol);
     }
 
-    public String symbol() {
-        return symbol;
-    }
-
-    public void notifyMoveIsInvalid() {
-        ioProcessor.printInvalidMoveMessage();
-    }
 }

@@ -12,10 +12,9 @@ public class Main {
         PrintStream printStream = new PrintStream(System.out);
         Board board = new Board(printStream);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        IOProcessor ioProcessor = new IOProcessor(in);
-        Player player1 = new Player(ioProcessor, "X");
-        Player player2 = new Player(ioProcessor, "O");
-        boolean isOver = false;
+        IOProcessor ioProcessor = new IOProcessor(in, printStream);
+        Player player1 = new Player(ioProcessor, "X", board);
+        Player player2 = new Player(ioProcessor, "O", board);
         Game game = new Game(board, player1, player2);
         game.start();
     }

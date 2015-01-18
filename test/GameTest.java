@@ -39,4 +39,23 @@ public class GameTest {
         verify(game, times(0)).play();
     }
 
+    @Test
+    public void shouldTellPlayer1ToMoveWhenGameStarts() throws IOException {
+        when(board.allSpacesTaken()).thenReturn(false).thenReturn(true);
+        game.start();
+        verify(player1).move();
+    }
+
+//    @Test
+//    public void shouldUpdateFirstCellWithPlayerSymbol() throws IOException {
+//        when(player1.symbol()).thenReturn("*");
+//        when(player1.getMove()).thenReturn(1);
+//        when(board.validatesMove(player1.getMove())).thenReturn(false).thenReturn(true);
+//        game.start();
+//        verify(board).updateGrid(1, "*");
+//    }
+
+
+
+
 }

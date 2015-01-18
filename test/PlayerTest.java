@@ -1,12 +1,10 @@
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.PrintStream;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class PlayerTest {
 
@@ -21,32 +19,38 @@ public class PlayerTest {
     @Before
     public void setUp() throws IOException {
         ioProcessor = mock(IOProcessor.class);
-        player = new Player(ioProcessor, "X");
-        player1 = mock(Player.class);
-        player2 = mock(Player.class);
-        printStream = mock(PrintStream.class);
         board = mock(Board.class);
-        game = new Game(board, player1, player2);
+        player1 = new Player(ioProcessor, "X", board);
     }
 
     @Test
-    public void shouldReturnAnInteger() throws IOException {
-        when(ioProcessor.processInput()).thenReturn(1);
-        Integer expected = 1;
-        Assert.assertEquals(expected, player.getMove());
+    public void shouldUpdateCell1OfTheGridWhenUserEnters1() throws IOException {
+        when(ioProcessor.getUserInput()).thenReturn(1);
+        player1.move();
+        verify(board).updateGrid(1, "X");
     }
 
-//    @Test
-//    public void shouldHaveXSymbolIfFirstPlayer() throws IOException {
-//        when(player1.symbol()).thenReturn("X");
-//        when(player1.getMove()).thenReturn(1);
-//        when(player2.symbol()).thenReturn("O");
-//        when(player2.getMove()).thenReturn(2);
-////        when(board.validatesMove(player1.getMove())).thenReturn(true);
-////        when(board.validatesMove(player2.getMove())).thenReturn(true);
-//
-//        verify(board).updateGrid(1, "X");
-//        verify(board).updateGrid(2, "O");
-//    }
+    @Test
+    public void shouldMarkBoardInTheFirstCell() throws IOException {
+        when(ioProcessor.getUserInput()).thenReturn(1);
+        player1.move();
+        verify(board).updateGrid(1, "X");
+    }
+
+    @Test
+    public void shouldMarkBoardInTheSecondCell() throws IOException {
+        when(ioProcessor.getUserInput()).thenReturn(2);
+        player1.move();
+        verify(board).updateGrid(2, "X");
+    }
+
+    @Test
+    public void shouldMarkBoardInTheSecondCellWithAStar() throws IOException {
+        player = new Player(ioProcessor, "*", board);
+        when(ioProcessor.getUserInput()).thenReturn(2);
+        player.move();
+        verify(board).updateGrid(2, "*");
+    }
+
 
 }

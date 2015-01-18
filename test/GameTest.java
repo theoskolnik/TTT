@@ -27,7 +27,7 @@ public class GameTest {
     public void shouldCheckIfAllBoardSpacesAreTaken() throws IOException {
         when(board.allSpacesTaken()).thenReturn(true);
         game.start();
-        Assert.assertEquals(true, game.isOver());
+        Assert.assertEquals(true, game.gameIsOver());
     }
 
 

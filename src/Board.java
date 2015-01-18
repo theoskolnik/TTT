@@ -25,7 +25,7 @@ public class Board {
     }
 
 
-    protected boolean isValidMove(Integer move) {
+    protected boolean validatesMove(Integer move) {
         return grid[move - 1] == "";
     }
 

@@ -54,7 +54,7 @@ public class BoardTest {
         when(player2.getMove()).thenReturn(1);
         when(player2.symbol()).thenReturn("O");
         board.updateGrid(player1.getMove(), player1.symbol());
-        board.isValidMove(player2.getMove());
+        board.validatesMove(player2.getMove());
         verify(board, times(0)).updateGrid(player2.getMove(), player2.symbol());
 
     }

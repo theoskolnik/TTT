@@ -36,16 +36,15 @@ public class PlayerTest {
         Assert.assertEquals(expected, player.getMove());
     }
 
-//    infinite loop test - need to fix
 //    @Test
 //    public void shouldHaveXSymbolIfFirstPlayer() throws IOException {
 //        when(player1.symbol()).thenReturn("X");
 //        when(player1.getMove()).thenReturn(1);
 //        when(player2.symbol()).thenReturn("O");
 //        when(player2.getMove()).thenReturn(2);
-//        when(board.validatesMove(player1.getMove())).thenReturn(true);
-//        when(board.validatesMove(player2.getMove())).thenReturn(true);
-//        game.start();
+////        when(board.validatesMove(player1.getMove())).thenReturn(true);
+////        when(board.validatesMove(player2.getMove())).thenReturn(true);
+//
 //        verify(board).updateGrid(1, "X");
 //        verify(board).updateGrid(2, "O");
 //    }

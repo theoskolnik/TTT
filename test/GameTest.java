@@ -5,7 +5,9 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 public class GameTest {
 
@@ -30,6 +32,11 @@ public class GameTest {
         Assert.assertEquals(true, game.gameIsOver());
     }
 
-
+    @Test
+    public void shouldPlayUntilGameIsOverIsTrue() throws IOException {
+        Game game = mock(Game.class);
+        when(game.gameIsOver()).thenReturn(true);
+        verify(game, times(0)).play();
+    }
 
 }

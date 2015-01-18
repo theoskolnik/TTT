@@ -33,22 +33,22 @@ public class Game {
         }
     }
 
-    public void turnFor(Player player) throws IOException {
+    public boolean gameIsOver() {
+        return board.allSpacesTaken();
+    }
+
+    private void turnFor(Player player) throws IOException {
         Integer move;
         game:
         if(board.validatesMove(move = player.getMove()) && !gameIsOver()) {
             board.updateGrid(move, player.symbol());
             if(gameIsOver()) {
                 board.print();
-                System.out.println("Game is over!");
+                System.out.println("Game is a draw.");
                 break game;
             }
         } else {
             player.notifyMoveIsInvalid();
         }
-    }
-
-    public boolean gameIsOver() {
-        return board.allSpacesTaken();
     }
 }

@@ -29,15 +29,12 @@ public class Board {
 
     public boolean allSpacesTaken() {
         int count = 0;
-        for (int i = 0; i < grid.length; i++) {
-            if (grid[i].equals("X") || grid[i].equals("O")){
+        for (String aGrid : grid) {
+            if (aGrid.equals("X") || aGrid.equals("O")) {
                 count++;
             }
         }
-        if (count == 9) {
-            return true;
-        }
-        return false;
+        return count == 9;
     }
 
     public boolean isMoveTaken(Integer move) {

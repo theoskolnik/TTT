@@ -15,12 +15,14 @@ public class GameTest {
     private Player player1;
     private Player player2;
     private Game game;
+    private IOProcessor ioProcessor;
 
     @Before
     public void setUp() throws Exception {
         board = mock(Board.class);
         player1 = mock(Player.class);
         player2 = mock(Player.class);
+        ioProcessor = mock(IOProcessor.class);
         game = new Game(board, player1, player2);
 
     }
@@ -46,14 +48,13 @@ public class GameTest {
         verify(player1).move();
     }
 
-//    @Test
-//    public void shouldUpdateFirstCellWithPlayerSymbol() throws IOException {
-//        when(player1.symbol()).thenReturn("*");
-//        when(player1.getMove()).thenReturn(1);
-//        when(board.validatesMove(player1.getMove())).thenReturn(false).thenReturn(true);
-//        game.start();
-//        verify(board).updateGrid(1, "*");
-//    }
+    @Test
+    public void shouldUpdateFirstCellWithPlayerSymbol() throws IOException {
+        Player player = new Player(ioProcessor, "*", board);
+        when(ioProcessor.getUserInput()).thenReturn(1);
+        player.move();
+        verify(board).updateGrid(1, "*");
+    }
 
 
 

@@ -21,20 +21,19 @@ public class Board {
     }
 
     public void updateGrid(Integer move, String symbol) {
-        if(!isMoveTaken(move)) {
             grid[move - 1] = symbol;
-        }
     }
 
 
     public boolean allSpacesTaken() {
-        int count = 0;
-        for (String aGrid : grid) {
-            if (aGrid.equals("X") || aGrid.equals("O")) {
-                count++;
-            }
-        }
-        return count == 9;
+//        int count = 0;
+//        for (String aGrid : grid) {
+//            if (aGrid.equals("X") || aGrid.equals("O")) {
+//                count++;
+//            }
+//        }
+//        return count == 9;
+        return false;
     }
 
     public boolean isMoveTaken(Integer move) {

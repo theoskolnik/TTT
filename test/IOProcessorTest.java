@@ -15,11 +15,15 @@ public class IOProcessorTest {
     private BufferedReader in;
     private IOProcessor ioProcessor;
     private PrintStream printStream;
+    private Board board;
+    private Player player;
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
         in = mock(BufferedReader.class);
+        board = mock(Board.class);
+        player = mock(Player.class);
         ioProcessor = new IOProcessor(in, printStream);
     }
 
@@ -43,7 +47,6 @@ public class IOProcessorTest {
         ioProcessor.getUserInput();
         verify(printStream).println("Enter a number 1 through 9");
     }
-
 
 
 }

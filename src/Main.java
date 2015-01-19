@@ -15,7 +15,7 @@ public class Main {
         IOProcessor ioProcessor = new IOProcessor(in, printStream);
         Player player1 = new Player(ioProcessor, "X", board);
         Player player2 = new Player(ioProcessor, "O", board);
-        Game game = new Game(board, player1, player2);
+        Game game = new Game(board, player1, player2, player1);
         game.start();
     }
 }

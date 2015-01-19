@@ -44,14 +44,7 @@ public class BoardTest {
         Assert.assertEquals(board.isMoveTaken(2), false);
     }
 
-//    @Test
-//    public void shouldCheckIfMoveIsValidBeforeUpdatingTheGrid() throws IOException {
-//        Board board = mock(Board.class);
-//        when(ioProcessor.getUserInput()).thenReturn(1);
-//        player.move();
-//        verify(board, times(1)).isMoveTaken(1);
-//
-//    }
+
 
 
 

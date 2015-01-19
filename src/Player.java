@@ -16,8 +16,15 @@ public class Player {
     }
 
     public void move() throws IOException {
+        // while input is invalid, then make user enter valid input
         int userInput = ioProcessor.getUserInput();
-        board.updateGrid(userInput, symbol);
+        if(!board.isMoveTaken(userInput)) {
+            board.updateGrid(userInput, symbol);
+        } else {
+            ioProcessor.printInvalidMoveMessage();
+        }
     }
+
+
 
 }

@@ -21,13 +21,11 @@ public class Board {
     }
 
     public void updateGrid(Integer move, String symbol) {
-        grid[move - 1] = symbol;
+        if(!isMoveTaken(move)) {
+            grid[move - 1] = symbol;
+        }
     }
 
-
-    protected boolean validatesMove(Integer move) {
-        return grid[move - 1] == "";
-    }
 
     public boolean allSpacesTaken() {
         int count = 0;
@@ -40,5 +38,10 @@ public class Board {
             return true;
         }
         return false;
+    }
+
+    public boolean isMoveTaken(Integer move) {
+        boolean cell = grid[move - 1].equals("");
+        return !cell;
     }
 }
